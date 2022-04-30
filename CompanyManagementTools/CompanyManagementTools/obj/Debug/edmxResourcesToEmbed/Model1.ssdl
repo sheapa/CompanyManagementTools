@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CMTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Annual_Incomes">
+    <Key>
+      <PropertyRef Name="IncomeId" />
+    </Key>
+    <Property Name="IncomeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="IncomeYear" Type="int" Nullable="false" />
+    <Property Name="YearIncome" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompanyService" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyAddressNumber" Type="int" />
+    <Property Name="CompanyStreetName" Type="varchar" MaxLength="50" />
+    <Property Name="CompanyState" Type="char" MaxLength="2" />
+    <Property Name="CompanyZip" Type="int" />
+    <Property Name="CompanySuite" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="EmpFirst" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="EmpLast" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="EmpSalary" Type="int" Nullable="false" />
+    <Property Name="EmpStart" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Annual_In__Compa__403A8C7D">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+    <End Role="Annual_Incomes" Type="Self.Annual_Incomes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Annual_Incomes">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employees__Compa__35BCFE0A">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CMTModelStoreContainer">
+    <EntitySet Name="Annual_Incomes" EntityType="Self.Annual_Incomes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Annual_In__Compa__403A8C7D" Association="Self.FK__Annual_In__Compa__403A8C7D">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Annual_Incomes" EntitySet="Annual_Incomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__Compa__35BCFE0A" Association="Self.FK__Employees__Compa__35BCFE0A">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

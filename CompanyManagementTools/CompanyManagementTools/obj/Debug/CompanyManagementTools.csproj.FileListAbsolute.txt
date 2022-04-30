@@ -1,0 +1,16 @@
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\CompanyManagementTools.exe.config
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\CompanyManagementTools.exe
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\CompanyManagementTools.pdb
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\EntityFramework.dll
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\EntityFramework.xml
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.csproj.AssemblyReference.cache
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.Form1.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.Properties.Resources.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.csproj.GenerateResource.cache
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.csproj.CoreCompileInputs.cache
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.csproj.CopyComplete
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.exe
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.pdb
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.EmployeeForms.AddEditEmployeeForm.resources

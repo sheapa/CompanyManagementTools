@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CMTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Annual_Incomes">
+    <Key>
+      <PropertyRef Name="IncomeId" />
+    </Key>
+    <Property Name="IncomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="IncomeYear" Type="Int32" Nullable="false" />
+    <Property Name="YearIncome" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK__Annual_In__Compa__403A8C7D" FromRole="Annual_Incomes" ToRole="Companies" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CompanyService" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyAddressNumber" Type="Int32" />
+    <Property Name="CompanyStreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyState" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="CompanyZip" Type="Int32" />
+    <Property Name="CompanySuite" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Annual_Incomes" Relationship="Self.FK__Annual_In__Compa__403A8C7D" FromRole="Companies" ToRole="Annual_Incomes" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__Compa__35BCFE0A" FromRole="Companies" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="EmpFirst" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EmpLast" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EmpSalary" Type="Int32" Nullable="false" />
+    <Property Name="EmpStart" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Company" Relationship="Self.FK__Employees__Compa__35BCFE0A" FromRole="Employees" ToRole="Companies" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Annual_In__Compa__403A8C7D">
+    <End Role="Companies" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Annual_Incomes" Type="Self.Annual_Incomes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Annual_Incomes">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employees__Compa__35BCFE0A">
+    <End Role="Companies" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Employees">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CMTEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Annual_Incomes" EntityType="Self.Annual_Incomes" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Annual_In__Compa__403A8C7D" Association="Self.FK__Annual_In__Compa__403A8C7D">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Annual_Incomes" EntitySet="Annual_Incomes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__Compa__35BCFE0A" Association="Self.FK__Employees__Compa__35BCFE0A">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Employees" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
