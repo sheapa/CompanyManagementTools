@@ -24,6 +24,8 @@ namespace CompanyManagementTools.EmployeeForms
 
         }
 
+
+        // Load company list into combobox
         private void LoadComboBox()
         {
             using (var db = new CMTEntities1())
@@ -35,9 +37,21 @@ namespace CompanyManagementTools.EmployeeForms
                 {
                     cmbEployeeCompany.Items.Add(company.CompanyName);
                 }
+
+
             }
+            //****** Convert above to lambda? *******///
+            //List<Company> companies = new List<Company>();
+            //using (var db = new CMTEntities1())
+            //{
+            //    db.Configuration.LazyLoadingEnabled = false;
+            //    companies = db.Companies.Select(x => x).OrderBy(company => company.CompanyName).ToList();
+            //}
+            //cmbEployeeCompany.DataSource = companies;
+            //****************************************//
 
         }
+       
 
         private void btnEmployeeSave_Click(object sender, EventArgs e)
         {
@@ -74,6 +88,11 @@ namespace CompanyManagementTools.EmployeeForms
             }
             return result;
         }
-       
+
+        private void btnCancelEmployee_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }   

@@ -29,9 +29,9 @@ namespace CompanyManagementTools
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.MainTab = new System.Windows.Forms.TabControl();
             this.CompanyListTab = new System.Windows.Forms.TabPage();
             this.btnAddCompany = new System.Windows.Forms.Button();
@@ -152,6 +152,7 @@ namespace CompanyManagementTools
             this.btnEditEmployee.TabIndex = 4;
             this.btnEditEmployee.Text = "Edit";
             this.btnEditEmployee.UseVisualStyleBackColor = true;
+            this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
             // 
             // btnDeleteEmployee
             // 
@@ -169,6 +170,7 @@ namespace CompanyManagementTools
             this.cmbRoster.Name = "cmbRoster";
             this.cmbRoster.Size = new System.Drawing.Size(954, 24);
             this.cmbRoster.TabIndex = 2;
+            this.cmbRoster.Text = "Please Select a Company";
             this.cmbRoster.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // dgRoster
@@ -198,16 +200,16 @@ namespace CompanyManagementTools
             // chartRevenue
             // 
             this.chartRevenue.BackColor = System.Drawing.Color.Silver;
-            chartArea2.Name = "ChartArea1";
-            this.chartRevenue.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartRevenue.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartRevenue.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartRevenue.Legends.Add(legend1);
             this.chartRevenue.Location = new System.Drawing.Point(10, 37);
             this.chartRevenue.Name = "chartRevenue";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartRevenue.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartRevenue.Series.Add(series1);
             this.chartRevenue.Size = new System.Drawing.Size(954, 601);
             this.chartRevenue.TabIndex = 3;
             this.chartRevenue.Text = "chart1";
@@ -219,6 +221,7 @@ namespace CompanyManagementTools
             this.cmbRevenue.Name = "cmbRevenue";
             this.cmbRevenue.Size = new System.Drawing.Size(954, 24);
             this.cmbRevenue.TabIndex = 2;
+            this.cmbRevenue.Text = "Please Select a Company";
             this.cmbRevenue.SelectedIndexChanged += new System.EventHandler(this.cmbRevenue_SelectedIndexChanged);
             // 
             // Form1

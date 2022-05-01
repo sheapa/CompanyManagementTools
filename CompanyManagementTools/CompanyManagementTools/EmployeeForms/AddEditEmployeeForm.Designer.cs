@@ -48,7 +48,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.btnEmployeeSave.Location = new System.Drawing.Point(523, 260);
             this.btnEmployeeSave.Name = "btnEmployeeSave";
             this.btnEmployeeSave.Size = new System.Drawing.Size(75, 23);
-            this.btnEmployeeSave.TabIndex = 0;
+            this.btnEmployeeSave.TabIndex = 6;
             this.btnEmployeeSave.Text = "Save";
             this.btnEmployeeSave.UseVisualStyleBackColor = true;
             this.btnEmployeeSave.Click += new System.EventHandler(this.btnEmployeeSave_Click);
@@ -58,9 +58,10 @@ namespace CompanyManagementTools.EmployeeForms
             this.btnCancelEmployee.Location = new System.Drawing.Point(442, 260);
             this.btnCancelEmployee.Name = "btnCancelEmployee";
             this.btnCancelEmployee.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelEmployee.TabIndex = 1;
+            this.btnCancelEmployee.TabIndex = 5;
             this.btnCancelEmployee.Text = "Cancel";
             this.btnCancelEmployee.UseVisualStyleBackColor = true;
+            this.btnCancelEmployee.Click += new System.EventHandler(this.btnCancelEmployee_Click);
             // 
             // lblFirstName
             // 
@@ -76,7 +77,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.txtFirstName.Location = new System.Drawing.Point(101, 83);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(223, 22);
-            this.txtFirstName.TabIndex = 3;
+            this.txtFirstName.TabIndex = 1;
             // 
             // calendarStartDate
             // 
@@ -98,7 +99,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.txtLastName.Location = new System.Drawing.Point(101, 124);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(223, 22);
-            this.txtLastName.TabIndex = 8;
+            this.txtLastName.TabIndex = 2;
             // 
             // lblLastName
             // 
@@ -114,7 +115,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.txtSalary.Location = new System.Drawing.Point(101, 162);
             this.txtSalary.Name = "txtSalary";
             this.txtSalary.Size = new System.Drawing.Size(223, 22);
-            this.txtSalary.TabIndex = 10;
+            this.txtSalary.TabIndex = 3;
             // 
             // lblSalary
             // 
@@ -131,7 +132,8 @@ namespace CompanyManagementTools.EmployeeForms
             this.cmbEployeeCompany.Location = new System.Drawing.Point(101, 41);
             this.cmbEployeeCompany.Name = "cmbEployeeCompany";
             this.cmbEployeeCompany.Size = new System.Drawing.Size(223, 24);
-            this.cmbEployeeCompany.TabIndex = 11;
+            this.cmbEployeeCompany.TabIndex = 0;
+            this.cmbEployeeCompany.Text = "Please Select a Company";
             this.cmbEployeeCompany.SelectedIndexChanged += new System.EventHandler(this.cmbEployeeCompany_SelectedIndexChanged);
             // 
             // lblEmployeeCompany
@@ -147,7 +149,7 @@ namespace CompanyManagementTools.EmployeeForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 294);
+            this.ClientSize = new System.Drawing.Size(666, 297);
             this.Controls.Add(this.lblEmployeeCompany);
             this.Controls.Add(this.cmbEployeeCompany);
             this.Controls.Add(this.txtSalary);

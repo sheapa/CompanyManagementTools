@@ -14,3 +14,4 @@ C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\Com
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.exe
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.pdb
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.EmployeeForms.AddEditEmployeeForm.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.EmployeeForms.EditEmployeeForm.resources
