@@ -29,11 +29,12 @@ namespace CompanyManagementTools
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.MainTab = new System.Windows.Forms.TabControl();
             this.CompanyListTab = new System.Windows.Forms.TabPage();
+            this.btnRefreshCompanies = new System.Windows.Forms.Button();
             this.btnAddCompany = new System.Windows.Forms.Button();
             this.btnEditCompany = new System.Windows.Forms.Button();
             this.btnDeleteCompany = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@ namespace CompanyManagementTools
             // 
             // CompanyListTab
             // 
+            this.CompanyListTab.Controls.Add(this.btnRefreshCompanies);
             this.CompanyListTab.Controls.Add(this.btnAddCompany);
             this.CompanyListTab.Controls.Add(this.btnEditCompany);
             this.CompanyListTab.Controls.Add(this.btnDeleteCompany);
@@ -81,6 +83,16 @@ namespace CompanyManagementTools
             this.CompanyListTab.Text = "Companies";
             this.CompanyListTab.UseVisualStyleBackColor = true;
             // 
+            // btnRefreshCompanies
+            // 
+            this.btnRefreshCompanies.Location = new System.Drawing.Point(10, 621);
+            this.btnRefreshCompanies.Name = "btnRefreshCompanies";
+            this.btnRefreshCompanies.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshCompanies.TabIndex = 4;
+            this.btnRefreshCompanies.Text = "Refresh";
+            this.btnRefreshCompanies.UseVisualStyleBackColor = true;
+            this.btnRefreshCompanies.Click += new System.EventHandler(this.btnRefreshCompanies_Click);
+            // 
             // btnAddCompany
             // 
             this.btnAddCompany.Location = new System.Drawing.Point(727, 621);
@@ -89,6 +101,7 @@ namespace CompanyManagementTools
             this.btnAddCompany.TabIndex = 3;
             this.btnAddCompany.Text = "Add";
             this.btnAddCompany.UseVisualStyleBackColor = true;
+            this.btnAddCompany.Click += new System.EventHandler(this.btnAddCompany_Click);
             // 
             // btnEditCompany
             // 
@@ -98,6 +111,7 @@ namespace CompanyManagementTools
             this.btnEditCompany.TabIndex = 2;
             this.btnEditCompany.Text = "Edit";
             this.btnEditCompany.UseVisualStyleBackColor = true;
+            this.btnEditCompany.Click += new System.EventHandler(this.btnEditCompany_Click);
             // 
             // btnDeleteCompany
             // 
@@ -107,6 +121,7 @@ namespace CompanyManagementTools
             this.btnDeleteCompany.TabIndex = 1;
             this.btnDeleteCompany.Text = "Delete";
             this.btnDeleteCompany.UseVisualStyleBackColor = true;
+            this.btnDeleteCompany.Click += new System.EventHandler(this.btnDeleteCompany_Click);
             // 
             // dgCompanies
             // 
@@ -117,7 +132,6 @@ namespace CompanyManagementTools
             this.dgCompanies.RowTemplate.Height = 24;
             this.dgCompanies.Size = new System.Drawing.Size(954, 609);
             this.dgCompanies.TabIndex = 0;
-            this.dgCompanies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // EmployeeRosterTab
             // 
@@ -200,16 +214,16 @@ namespace CompanyManagementTools
             // chartRevenue
             // 
             this.chartRevenue.BackColor = System.Drawing.Color.Silver;
-            chartArea1.Name = "ChartArea1";
-            this.chartRevenue.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartRevenue.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chartRevenue.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartRevenue.Legends.Add(legend2);
             this.chartRevenue.Location = new System.Drawing.Point(10, 37);
             this.chartRevenue.Name = "chartRevenue";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartRevenue.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartRevenue.Series.Add(series2);
             this.chartRevenue.Size = new System.Drawing.Size(954, 601);
             this.chartRevenue.TabIndex = 3;
             this.chartRevenue.Text = "chart1";
@@ -228,10 +242,10 @@ namespace CompanyManagementTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 676);
+            this.ClientSize = new System.Drawing.Size(982, 678);
             this.Controls.Add(this.MainTab);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Company Management Tools";
             this.MainTab.ResumeLayout(false);
             this.CompanyListTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCompanies)).EndInit();
@@ -260,6 +274,7 @@ namespace CompanyManagementTools
         private System.Windows.Forms.Button btnDeleteEmployee;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRevenue;
         private System.Windows.Forms.ComboBox cmbRevenue;
+        private System.Windows.Forms.Button btnRefreshCompanies;
     }
 }
 

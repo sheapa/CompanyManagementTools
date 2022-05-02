@@ -43,6 +43,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.btnEditEmployeeSave = new System.Windows.Forms.Button();
             this.lblEmpSelect = new System.Windows.Forms.Label();
             this.cmbEditEmployeeSelect = new System.Windows.Forms.ComboBox();
+            this.txtEmpId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblCompanySelect
@@ -117,6 +118,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.txtEditFirstName.Name = "txtEditFirstName";
             this.txtEditFirstName.Size = new System.Drawing.Size(223, 22);
             this.txtEditFirstName.TabIndex = 2;
+            this.txtEditFirstName.TextChanged += new System.EventHandler(this.txtEditFirstName_TextChanged);
             // 
             // lblFirstName
             // 
@@ -145,6 +147,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.btnEditEmployeeSave.TabIndex = 7;
             this.btnEditEmployeeSave.Text = "Save";
             this.btnEditEmployeeSave.UseVisualStyleBackColor = true;
+            this.btnEditEmployeeSave.Click += new System.EventHandler(this.btnEditEmployeeSave_Click);
             // 
             // lblEmpSelect
             // 
@@ -163,12 +166,21 @@ namespace CompanyManagementTools.EmployeeForms
             this.cmbEditEmployeeSelect.Size = new System.Drawing.Size(223, 24);
             this.cmbEditEmployeeSelect.TabIndex = 1;
             this.cmbEditEmployeeSelect.Text = "Please Select an Employee";
+            this.cmbEditEmployeeSelect.SelectedIndexChanged += new System.EventHandler(this.cmbEditEmployeeSelect_SelectedIndexChanged);
+            // 
+            // txtEmpId
+            // 
+            this.txtEmpId.Location = new System.Drawing.Point(99, 227);
+            this.txtEmpId.Name = "txtEmpId";
+            this.txtEmpId.Size = new System.Drawing.Size(100, 22);
+            this.txtEmpId.TabIndex = 27;
             // 
             // EditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 297);
+            this.ClientSize = new System.Drawing.Size(657, 298);
+            this.Controls.Add(this.txtEmpId);
             this.Controls.Add(this.lblEmpSelect);
             this.Controls.Add(this.cmbEditEmployeeSelect);
             this.Controls.Add(this.lblCompanySelect);
@@ -206,5 +218,6 @@ namespace CompanyManagementTools.EmployeeForms
         private System.Windows.Forms.Button btnEditEmployeeSave;
         private System.Windows.Forms.Label lblEmpSelect;
         private System.Windows.Forms.ComboBox cmbEditEmployeeSelect;
+        private System.Windows.Forms.TextBox txtEmpId;
     }
 }

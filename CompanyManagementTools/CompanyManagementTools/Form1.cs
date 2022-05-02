@@ -1,13 +1,9 @@
-﻿using CompanyManagementTools.EmployeeForms;
-using CompanyManagementTools.Models;
+﻿using CompanyManagementTools.CompanyForms;
+using CompanyManagementTools.EmployeeForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompanyManagementTools
@@ -36,10 +32,7 @@ namespace CompanyManagementTools
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
         /// <item>
         /// Allows user to select company and view list of employees.
         /// </item>
@@ -73,7 +66,7 @@ namespace CompanyManagementTools
         /// <item>
         /// Loads list of companies for form 1 company list tab.
         /// </item>
-        private void LoadMainCompanyList()
+        public void LoadMainCompanyList()
         {
             List<Company> companies = new List<Company>();
             using (var db = new CMTEntities1())
@@ -82,24 +75,7 @@ namespace CompanyManagementTools
                companies = db.Companies.Select(x => x).OrderBy(company => company.CompanyName).ToList();
             }
             dgCompanies.DataSource = companies;
-
-            // ***** Old Code Refactored above *****//
-            //using (var db = new CMTEntities1())
-            //{
-
-            //    db.Configuration.LazyLoadingEnabled = false;
-            //    List<Company> companies = new List<Company>();
-
-            //    var query = from c in db.Companies
-            //                orderby c.CompanyName
-            //                select c;
-            //    foreach (Company company in query)
-            //    {
-            //        companies.Add(company);
-            //    }
-            //    dgCompanies.DataSource = companies;
-            //}
-            //****************************************//
+           
         }
 
         /// <item>
@@ -109,7 +85,6 @@ namespace CompanyManagementTools
         {
             using (var db = new CMTEntities1())
             {
-
                 var CompanyQuery = from c in db.Companies
                                    orderby c.CompanyName
                                    select c;
@@ -128,40 +103,74 @@ namespace CompanyManagementTools
         /// </item>
         private void cmbRevenue_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //List<Annual_Incomes> listOfRevenue = new List<Annual_Incomes>();
-
-            //string selection = (cmbRevenue.SelectedItem).ToString();
-
-            //using (var dbEnt = new CMTEntities1())
-            //{
-            //    var RevenueCompanySelect =  from c in dbEnt.Companies
-            //                                where c.CompanyName == selection
-            //                                select c.CompanyId;
-            //    int companyId = EmployeeCompanySelect.FirstOrDefault();
-
-            //    var EmployeeListSelect = from emp in dbEnt.Employees
-            //                             where emp.CompanyId == companyId
-            //                             select emp;
-            //    foreach (Annual_Incomes revenue in listOfRevenue)
-            //    {
-            //        listOfRevenue.Add(revenue);
-            //    }
-            //    chartRevenue.DataSource = listOfRevenue;
-            //}
+        
         }
 
         public void btnAddEmployee_Click(object sender, EventArgs e)
         {
             AddEditEmployeeForm add = new AddEditEmployeeForm();
-            add.Show(btnAddEmployee);
-            
+            add.ShowDialog(btnAddEmployee);
+            load_dgRoster();
 
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
             EditEmployeeForm edit = new EditEmployeeForm();
-            edit.Show(btnEditEmployee);
+            edit.ShowDialog(btnEditEmployee);
+            load_dgRoster();
+        }
+
+        private void btnAddCompany_Click(object sender, EventArgs e)
+        {
+            AddCompanyForm add = new AddCompanyForm();
+            add.ShowDialog(btnAddCompany);
+            LoadMainCompanyList();
+        }
+
+        private void btnRefreshCompanies_Click(object sender, EventArgs e)
+        {
+            LoadMainCompanyList();
+        }
+
+        private void btnEditCompany_Click(object sender, EventArgs e)
+        {
+            UpdateCompanyForm edit = new UpdateCompanyForm();
+            edit.ShowDialog(btnEditCompany);
+            LoadMainCompanyList();
+        }
+
+        private void btnDeleteCompany_Click(object sender, EventArgs e)
+        {
+            DeleteCompanyForm delete = new DeleteCompanyForm();
+            delete.ShowDialog(btnDeleteCompany);
+            LoadMainCompanyList();
+        }
+
+        private void load_dgRoster()
+        {
+            List<Employee> listOfEmployees = new List<Employee>();
+
+            string selection = (cmbRoster.SelectedItem).ToString();
+            int companyId = 0;
+
+            using (var dbEnt = new CMTEntities1())
+            {
+                var EmployeeCompanySelect = from c in dbEnt.Companies
+                                            where c.CompanyName == selection
+                                            select c.CompanyId;
+                companyId = EmployeeCompanySelect.FirstOrDefault();
+
+            }
+
+            using (var dbEnt2 = new CMTEntities1())
+            {
+                dbEnt2.Configuration.LazyLoadingEnabled = false;
+                listOfEmployees = dbEnt2.Employees.Where(d => d.CompanyId == companyId).Select(g => g).ToList();
+
+            }
+
+            dgRoster.DataSource = listOfEmployees;
         }
     }
 }

@@ -15,3 +15,8 @@ C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\Com
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.pdb
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.EmployeeForms.AddEditEmployeeForm.resources
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.EmployeeForms.EditEmployeeForm.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\System.ValueTuple.dll
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\System.ValueTuple.xml
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.CompanyForms.AddCompanyForm.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.CompanyForms.DeleteCompanyForm.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.CompanyForms.UpdateCompanyForm.resources

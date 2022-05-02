@@ -149,7 +149,7 @@ namespace CompanyManagementTools.EmployeeForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 297);
+            this.ClientSize = new System.Drawing.Size(657, 298);
             this.Controls.Add(this.lblEmployeeCompany);
             this.Controls.Add(this.cmbEployeeCompany);
             this.Controls.Add(this.txtSalary);
