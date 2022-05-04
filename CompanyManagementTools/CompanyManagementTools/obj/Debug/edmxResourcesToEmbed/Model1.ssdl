@@ -67,6 +67,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="ufn_GetProfit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Profit" Type="int" />
+          <Property Name="YearOfIncome" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <EntityContainer Name="CMTModelStoreContainer">
     <EntitySet Name="Annual_Incomes" EntityType="Self.Annual_Incomes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />

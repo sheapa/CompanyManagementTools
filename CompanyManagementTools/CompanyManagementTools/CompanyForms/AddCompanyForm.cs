@@ -20,7 +20,7 @@ namespace CompanyManagementTools.CompanyForms
 
         private void btnAddComp_Click(object sender, EventArgs e)
         {
-            using (var dbEnt = new CMTEntities1())
+            using (var dbEnt = new CMTEntities2())
             {
                 Company cmp = new Company();
                 cmp.CompanyName = txtAddCompName.Text;
@@ -37,7 +37,7 @@ namespace CompanyManagementTools.CompanyForms
         public bool SaveCompany(Company cmp)
         {
             bool result = false;
-            using (CMTEntities1 _entity = new CMTEntities1())
+            using (CMTEntities2 _entity = new CMTEntities2())
             {
                 _entity.Companies.Add(cmp);
                 _entity.SaveChanges();

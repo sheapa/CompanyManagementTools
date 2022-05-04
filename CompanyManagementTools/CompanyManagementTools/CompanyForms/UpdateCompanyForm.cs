@@ -16,7 +16,7 @@ namespace CompanyManagementTools.CompanyForms
         // load list of companies for combobox
         private void LoadComboBox()
         {
-            using (var db = new CMTEntities1())
+            using (var db = new CMTEntities2())
             {
                 var CompanyQuery = db.Companies.Select(c => c).OrderBy(n => n.CompanyName);
                 foreach (Company company in CompanyQuery)
@@ -33,7 +33,7 @@ namespace CompanyManagementTools.CompanyForms
         {
             string selection = (cmbEditCompanySelect.SelectedItem).ToString();
             
-            using (var dbEnt = new CMTEntities1())
+            using (var dbEnt = new CMTEntities2())
             {
                 var companyData = dbEnt.Companies.Where(c => c.CompanyName == selection).Select(d => d).ToList();
 
@@ -59,7 +59,7 @@ namespace CompanyManagementTools.CompanyForms
             string selection = (cmbEditCompanySelect.SelectedItem).ToString();
             int companyId = 0;
 
-            using (var dbEnt = new CMTEntities1())
+            using (var dbEnt = new CMTEntities2())
             {
                 var companySelect = from c in dbEnt.Companies
                                             where c.CompanyName == selection
@@ -82,12 +82,13 @@ namespace CompanyManagementTools.CompanyForms
             this.Close();
 
         }
-        public bool UpdateCompanyDetails(Company cmp) // UpdateStudentDetails method for update a existing Record  
+        public bool UpdateCompanyDetails(Company cmp) // Update Company Details method for update a existing Record  
         {
             bool result = false;
-            using (CMTEntities1 _entity = new CMTEntities1())
+            using (CMTEntities2 _entity = new CMTEntities2())
             {
-                Company _comp = _entity.Companies.Where(x => x.CompanyId == cmp.CompanyId).Select(x => x).FirstOrDefault();
+                Company _comp = _entity.Companies.Where(x => x.CompanyId == cmp.CompanyId)
+                                                 .Select(x => x).FirstOrDefault();
                 _comp.CompanyName = cmp.CompanyName;
                 _comp.CompanyService = cmp.CompanyService;
                 _comp.CompanyAddressNumber = cmp.CompanyAddressNumber;

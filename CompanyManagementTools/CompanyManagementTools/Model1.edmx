@@ -72,6 +72,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ufn_GetProfit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="CompanyId" Type="int" Nullable="false" />
+                <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Profit" Type="int" />
+                <Property Name="YearOfIncome" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <EntityContainer Name="CMTModelStoreContainer">
           <EntitySet Name="Annual_Incomes" EntityType="Self.Annual_Incomes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
@@ -91,6 +103,12 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CMTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="ufn_GetProfit_Result">
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Profit" Type="Int32" />
+          <Property Name="YearOfIncome" Type="Int32" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Annual_Incomes">
           <Key>
             <PropertyRef Name="IncomeId" />
@@ -162,7 +180,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CMTEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CMTEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Annual_Incomes" EntityType="Self.Annual_Incomes" />
           <EntitySet Name="Companies" EntityType="Self.Company" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
@@ -175,13 +193,14 @@
             <End Role="Companies" EntitySet="Companies" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+          <FunctionImport Name="ufn_GetProfit" IsComposable="true" ReturnType="Collection(CMTModel.ufn_GetProfit_Result)" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CMTModelStoreContainer" CdmEntityContainer="CMTEntities1">
+        <EntityContainerMapping StorageEntityContainer="CMTModelStoreContainer" CdmEntityContainer="CMTEntities2">
           <EntitySetMapping Name="Annual_Incomes">
             <EntityTypeMapping TypeName="CMTModel.Annual_Incomes">
               <MappingFragment StoreEntitySet="Annual_Incomes">
@@ -229,6 +248,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionName="CMTModel.Store.ufn_GetProfit" FunctionImportName="ufn_GetProfit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CMTModel.ufn_GetProfit_Result">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+                <ScalarProperty Name="YearOfIncome" ColumnName="YearOfIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="CMTModelStoreContainer" CdmEntityContainer="CMTEntities1">
+  <EntityContainerMapping StorageEntityContainer="CMTModelStoreContainer" CdmEntityContainer="CMTEntities2">
     <EntitySetMapping Name="Annual_Incomes">
       <EntityTypeMapping TypeName="CMTModel.Annual_Incomes">
         <MappingFragment StoreEntitySet="Annual_Incomes">
@@ -48,5 +48,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionName="CMTModel.Store.ufn_GetProfit" FunctionImportName="ufn_GetProfit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CMTModel.ufn_GetProfit_Result">
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Profit" ColumnName="Profit" />
+          <ScalarProperty Name="YearOfIncome" ColumnName="YearOfIncome" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

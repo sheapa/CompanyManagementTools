@@ -20,3 +20,6 @@ C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\Com
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.CompanyForms.AddCompanyForm.resources
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.CompanyForms.DeleteCompanyForm.resources
 C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.CompanyForms.UpdateCompanyForm.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\obj\Debug\CompanyManagementTools.EmployeeForms.DeleteEmployeeForm.resources
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\System.Data.SqlClient.dll
+C:\Users\pat-work\source\repos\CompanyManagementTools\CompanyManagementTools\CompanyManagementTools\bin\Debug\System.Data.SqlClient.xml

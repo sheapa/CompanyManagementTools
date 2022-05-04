@@ -44,6 +44,7 @@ namespace CompanyManagementTools.EmployeeForms
             this.lblEmpSelect = new System.Windows.Forms.Label();
             this.cmbEditEmployeeSelect = new System.Windows.Forms.ComboBox();
             this.txtEmpId = new System.Windows.Forms.TextBox();
+            this.txtCompanyId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblCompanySelect
@@ -174,12 +175,21 @@ namespace CompanyManagementTools.EmployeeForms
             this.txtEmpId.Name = "txtEmpId";
             this.txtEmpId.Size = new System.Drawing.Size(100, 22);
             this.txtEmpId.TabIndex = 27;
+            this.txtEmpId.TextChanged += new System.EventHandler(this.txtEmpId_TextChanged);
+            // 
+            // txtCompanyId
+            // 
+            this.txtCompanyId.Location = new System.Drawing.Point(99, 255);
+            this.txtCompanyId.Name = "txtCompanyId";
+            this.txtCompanyId.Size = new System.Drawing.Size(100, 22);
+            this.txtCompanyId.TabIndex = 28;
             // 
             // EditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 298);
+            this.Controls.Add(this.txtCompanyId);
             this.Controls.Add(this.txtEmpId);
             this.Controls.Add(this.lblEmpSelect);
             this.Controls.Add(this.cmbEditEmployeeSelect);
@@ -219,5 +229,6 @@ namespace CompanyManagementTools.EmployeeForms
         private System.Windows.Forms.Label lblEmpSelect;
         private System.Windows.Forms.ComboBox cmbEditEmployeeSelect;
         private System.Windows.Forms.TextBox txtEmpId;
+        private System.Windows.Forms.TextBox txtCompanyId;
     }
 }

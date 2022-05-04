@@ -29,9 +29,13 @@ namespace CompanyManagementTools
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.MainTab = new System.Windows.Forms.TabControl();
             this.CompanyListTab = new System.Windows.Forms.TabPage();
             this.btnRefreshCompanies = new System.Windows.Forms.Button();
@@ -48,6 +52,7 @@ namespace CompanyManagementTools
             this.ProfitLossTab = new System.Windows.Forms.TabPage();
             this.chartRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cmbRevenue = new System.Windows.Forms.ComboBox();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.MainTab.SuspendLayout();
             this.CompanyListTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompanies)).BeginInit();
@@ -176,6 +181,7 @@ namespace CompanyManagementTools
             this.btnDeleteEmployee.TabIndex = 3;
             this.btnDeleteEmployee.Text = "Delete";
             this.btnDeleteEmployee.UseVisualStyleBackColor = true;
+            this.btnDeleteEmployee.Click += new System.EventHandler(this.btnDeleteEmployee_Click);
             // 
             // cmbRoster
             // 
@@ -214,19 +220,29 @@ namespace CompanyManagementTools
             // chartRevenue
             // 
             this.chartRevenue.BackColor = System.Drawing.Color.Silver;
-            chartArea2.Name = "ChartArea1";
-            this.chartRevenue.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartRevenue.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.chartRevenue.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartRevenue.Legends.Add(legend1);
             this.chartRevenue.Location = new System.Drawing.Point(10, 37);
             this.chartRevenue.Name = "chartRevenue";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartRevenue.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Salary";
+            dataPoint3.Label = "";
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.chartRevenue.Series.Add(series1);
             this.chartRevenue.Size = new System.Drawing.Size(954, 601);
             this.chartRevenue.TabIndex = 3;
-            this.chartRevenue.Text = "chart1";
+            title1.Name = "Profit";
+            title1.Text = "Profit Chart";
+            this.chartRevenue.Titles.Add(title1);
+            this.chartRevenue.Click += new System.EventHandler(this.chartRevenue_Click);
             // 
             // cmbRevenue
             // 
@@ -237,6 +253,14 @@ namespace CompanyManagementTools
             this.cmbRevenue.TabIndex = 2;
             this.cmbRevenue.Text = "Please Select a Company";
             this.cmbRevenue.SelectedIndexChanged += new System.EventHandler(this.cmbRevenue_SelectedIndexChanged);
+            // 
+            // entityCommand1
+            // 
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
             // 
             // Form1
             // 
@@ -275,6 +299,7 @@ namespace CompanyManagementTools
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRevenue;
         private System.Windows.Forms.ComboBox cmbRevenue;
         private System.Windows.Forms.Button btnRefreshCompanies;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
     }
 }
 

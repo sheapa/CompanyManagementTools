@@ -12,11 +12,13 @@ namespace CompanyManagementTools
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class CMTEntities1 : DbContext
+    public partial class CMTEntities2 : DbContext
     {
-        public CMTEntities1()
-            : base("name=CMTEntities1")
+        public CMTEntities2()
+            : base("name=CMTEntities2")
         {
         }
     
@@ -29,5 +31,11 @@ namespace CompanyManagementTools
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+    
+        [DbFunction("CMTEntities2", "ufn_GetProfit")]
+        public virtual IQueryable<ufn_GetProfit_Result> ufn_GetProfit()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufn_GetProfit_Result>("[CMTEntities2].[ufn_GetProfit]()");
+        }
     }
 }

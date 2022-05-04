@@ -19,6 +19,7 @@ namespace CompanyManagementTools.EmployeeForms
             InitializeComponent();
             LoadComboBox();
             txtEmpId.Visible = false;
+            txtCompanyId.Visible = false;
         }
 
         // Cancel Button
@@ -31,7 +32,7 @@ namespace CompanyManagementTools.EmployeeForms
         private void LoadComboBox()
         {
             List<Company> companyList = new List<Company>();
-            using (var db = new CMTEntities1())
+            using (var db = new CMTEntities2())
             {
                 var CompanyQuery = from c in db.Companies
                                    orderby c.CompanyName
@@ -52,7 +53,7 @@ namespace CompanyManagementTools.EmployeeForms
             string companySelection = (cmbEditCompanySelect.SelectedItem).ToString();
             int companyId = 0;
             //Match combo selection company name to company name in object then store associated company Id.
-            using (var dbEnt = new CMTEntities1())
+            using (var dbEnt = new CMTEntities2())
             {
                 companyId = dbEnt.Companies.Where(c => c.CompanyName == companySelection)
                                            .Select(i => i.CompanyId).FirstOrDefault();
@@ -60,7 +61,7 @@ namespace CompanyManagementTools.EmployeeForms
 
             //Generate list of employees for selected company.
             var employeeTupleList = new List<Tuple<int, string>>();
-            using (var dbEnt2 = new CMTEntities1())
+            using (var dbEnt2 = new CMTEntities2())
             {
                 dbEnt2.Configuration.LazyLoadingEnabled = false;
                 var listOfEmployees = dbEnt2.Employees.Where(d => d.CompanyId == companyId)
@@ -93,7 +94,7 @@ namespace CompanyManagementTools.EmployeeForms
                 if (tupe.Item2 == employeeSelection)
                 {
                     int empId = tupe.Item1;
-                    using (var dbEnt = new CMTEntities1())
+                    using (var dbEnt = new CMTEntities2())
                     {
                         Employee employeeData = dbEnt.Employees.Where(c => c.EmployeeId == empId)
                                                    .Select(i => i).FirstOrDefault();
@@ -101,6 +102,7 @@ namespace CompanyManagementTools.EmployeeForms
                         txtEditLastName.Text = employeeData.EmpLast;
                         txtEditSalary.Text = (employeeData.EmpSalary).ToString();
                         txtEmpId.Text = (employeeData.EmployeeId).ToString();
+                        txtCompanyId.Text = (employeeData.CompanyId).ToString();
                     }
                 }
             }
@@ -117,7 +119,7 @@ namespace CompanyManagementTools.EmployeeForms
             string companySelection = (cmbEditCompanySelect.SelectedItem).ToString();
             int companyId = 0;
             //Match combo selection company name to company name in object then store associated company Id.
-            using (var dbEnt = new CMTEntities1())
+            using (var dbEnt = new CMTEntities2())
             {
                 companyId = dbEnt.Companies.Where(c => c.CompanyName == companySelection)
                                            .Select(i => i.CompanyId).FirstOrDefault();
@@ -125,7 +127,7 @@ namespace CompanyManagementTools.EmployeeForms
 
             //Generate list of employees for selected company.
             var employeeTupleList = new List<Tuple<int, string>>();
-            using (var dbEnt2 = new CMTEntities1())
+            using (var dbEnt2 = new CMTEntities2())
             {
                 dbEnt2.Configuration.LazyLoadingEnabled = false;
                 var listOfEmployees = dbEnt2.Employees.Where(d => d.CompanyId == companyId)
@@ -153,7 +155,7 @@ namespace CompanyManagementTools.EmployeeForms
                     if (tupe.Item2 == cmbEditEmployeeSelect.Text)
                     {
                         int empId = tupe.Item1;
-                        using (var dbEnt = new CMTEntities1())
+                        using (var dbEnt = new CMTEntities2())
                         {
                             Employee employeeData = dbEnt.Employees.Where(c => c.EmployeeId == empId)
                                                        .Select(i => i).FirstOrDefault();
@@ -169,10 +171,43 @@ namespace CompanyManagementTools.EmployeeForms
 //**************************************************************************************************************************************************************//
         private void btnEditEmployeeSave_Click(object sender, EventArgs e)
         {
+            Employee emp = new Employee();
+            emp.EmpFirst = txtEditFirstName.Text;
+            emp.EmpLast = txtEditLastName.Text;
+            emp.EmpSalary = Int32.Parse(txtEditSalary.Text);
+            emp.EmpStart = calendarEditStartDate.SelectionStart;
+            emp.EmployeeId = Int32.Parse(txtEmpId.Text);
+            emp.CompanyId = Int32.Parse(txtCompanyId.Text);
+            bool result = UpdateEmployeeDetails(emp);
+            this.Close();
 
         }
 
+        public bool UpdateEmployeeDetails(Employee emp)
+        {
+            bool result = false;
+            using (CMTEntities2 _entity = new CMTEntities2())
+            {
+                Employee _emp = _entity.Employees.Where(x => x.EmployeeId == emp.EmployeeId)
+                                                 .Select(x => x).FirstOrDefault();
+                _emp.EmpFirst = emp.EmpFirst;
+                _emp.EmpLast = emp.EmpLast;
+                _emp.EmpSalary = emp.EmpSalary;
+                _emp.EmpStart = emp.EmpStart;
+                _emp.CompanyId = emp.CompanyId;
+
+                _entity.SaveChanges();
+                result = true;
+            }
+            return result;
+        }
+
         private void txtEditFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmpId_TextChanged(object sender, EventArgs e)
         {
 
         }

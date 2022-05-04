@@ -21,7 +21,7 @@ namespace CompanyManagementTools.CompanyForms
         // load combo box with list of companies
         private void LoadComboBox()
         {
-            using (var db = new CMTEntities1())
+            using (var db = new CMTEntities2())
             {
                 var CompanyQuery = db.Companies.Select(c => c).OrderBy(n => n.CompanyName);
                 foreach (Company company in CompanyQuery)
@@ -41,7 +41,7 @@ namespace CompanyManagementTools.CompanyForms
         public bool DeleteCompanyDetails(Company cmp)  
         {
             bool result = false;
-            using (CMTEntities1 _entity = new CMTEntities1())
+            using (CMTEntities2 _entity = new CMTEntities2())
             {
                 Company _company = _entity.Companies.Where(x => x.CompanyId == cmp.CompanyId).Select(x => x).FirstOrDefault();
                 _entity.Companies.Remove(_company);
@@ -60,9 +60,10 @@ namespace CompanyManagementTools.CompanyForms
         {
             string selection = (cmbDeleteComp.SelectedItem).ToString();
             Company cmp = new Company();
-            using (var dbEnt = new CMTEntities1())
+            using (var dbEnt = new CMTEntities2())
             {
-                var companyData = dbEnt.Companies.Where(c => c.CompanyName == selection).Select(d => d).ToList();
+                var companyData = dbEnt.Companies.Where(c => c.CompanyName == selection)
+                                                 .Select(d => d).ToList();
 
                 foreach (var comp in companyData)
                 {

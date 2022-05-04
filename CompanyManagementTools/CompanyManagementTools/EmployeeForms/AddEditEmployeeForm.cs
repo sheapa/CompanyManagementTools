@@ -28,7 +28,7 @@ namespace CompanyManagementTools.EmployeeForms
         // Load company list into combobox
         private void LoadComboBox()
         {
-            using (var db = new CMTEntities1())
+            using (var db = new CMTEntities2())
             {
                 var CompanyQuery = from c in db.Companies
                                    orderby c.CompanyName
@@ -42,7 +42,7 @@ namespace CompanyManagementTools.EmployeeForms
             }
             //****** Convert above to lambda? *******///
             //List<Company> companies = new List<Company>();
-            //using (var db = new CMTEntities1())
+            //using (var db = new CMTEntities2())
             //{
             //    db.Configuration.LazyLoadingEnabled = false;
             //    companies = db.Companies.Select(x => x).OrderBy(company => company.CompanyName).ToList();
@@ -58,7 +58,7 @@ namespace CompanyManagementTools.EmployeeForms
             string selection = (cmbEployeeCompany.SelectedItem).ToString();
 
 
-            using (var dbEnt = new CMTEntities1())
+            using (var dbEnt = new CMTEntities2())
             {
                 var EmployeeCompanySelect = from c in dbEnt.Companies
                                             where c.CompanyName == selection
@@ -80,7 +80,7 @@ namespace CompanyManagementTools.EmployeeForms
         public bool SaveEmployee(Employee emp)
         {
             bool result = false;
-            using (CMTEntities1 _entity = new CMTEntities1())
+            using (CMTEntities2 _entity = new CMTEntities2())
             {
                 _entity.Employees.Add(emp);
                 _entity.SaveChanges();

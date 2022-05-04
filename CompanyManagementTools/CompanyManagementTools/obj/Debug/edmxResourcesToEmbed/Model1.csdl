@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CMTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="ufn_GetProfit_Result">
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Profit" Type="Int32" />
+    <Property Name="YearOfIncome" Type="Int32" Nullable="false" />
+  </ComplexType>
   <EntityType Name="Annual_Incomes">
     <Key>
       <PropertyRef Name="IncomeId" />
@@ -71,7 +77,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="CMTEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="CMTEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Annual_Incomes" EntityType="Self.Annual_Incomes" />
     <EntitySet Name="Companies" EntityType="Self.Company" />
     <EntitySet Name="Employees" EntityType="Self.Employee" />
@@ -84,5 +90,6 @@
       <End Role="Companies" EntitySet="Companies" />
       <End Role="Employees" EntitySet="Employees" />
     </AssociationSet>
+    <FunctionImport Name="ufn_GetProfit" IsComposable="true" ReturnType="Collection(CMTModel.ufn_GetProfit_Result)" />
   </EntityContainer>
 </Schema>
