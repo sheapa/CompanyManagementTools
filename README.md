@@ -19,4 +19,4 @@ A company management platform built in .Net Framework and Windows Forms using En
 5. Debug and refactor.
 
 ## Pics or it didn't happen.
-![Alt text](/CompanyManagementTools/CompanyManagementTools/CompanyManagementTools/GIF/CMT.gif?raw=true "Method Gif")
+![Alt text](/CompanyManagementTools/CompanyManagementTools/GIF/CMT.gif?raw=true "Method Gif")
