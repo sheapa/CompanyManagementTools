@@ -62,6 +62,7 @@ namespace CompanyManagementTools.CompanyForms
             this.txtAddCompName.Name = "txtAddCompName";
             this.txtAddCompName.Size = new System.Drawing.Size(472, 22);
             this.txtAddCompName.TabIndex = 1;
+            this.txtAddCompName.TextChanged += new System.EventHandler(this.txtAddCompName_TextChanged);
             // 
             // txtAddCompService
             // 

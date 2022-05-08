@@ -50,5 +50,10 @@ namespace CompanyManagementTools.CompanyForms
         {
             this.Close();
         }
+
+        private void txtAddCompName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

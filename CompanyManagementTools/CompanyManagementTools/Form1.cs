@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CompanyManagementTools.ProfitLossForms;
 
 namespace CompanyManagementTools
 {
@@ -189,11 +190,12 @@ namespace CompanyManagementTools
         /// </item>
         private void cmbRevenue_SelectedIndexChanged(object sender, EventArgs e)
         {
+            chartRevenue.Series["Salary"].Points.Clear();
             using (var dbEnt = new CMTEntities2())
             {
                 var result = dbEnt.ufn_GetProfit().Where(c => c.CompanyName == cmbRevenue.Text)
                                                   .Select(g => g).ToList();
-
+                
                 foreach (var res in result)
                 {
                     chartRevenue.Series["Salary"].Points.AddXY((res.YearOfIncome).ToString(), res.Profit);
@@ -205,6 +207,15 @@ namespace CompanyManagementTools
         {
             
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddRevenueForm add = new AddRevenueForm();
+            add.ShowDialog(btnAddRevenue);
+            LoadComboBoxes();
+            chartRevenue.Update();
+            
         }
     }
 }

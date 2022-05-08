@@ -53,6 +53,7 @@ namespace CompanyManagementTools
             this.chartRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cmbRevenue = new System.Windows.Forms.ComboBox();
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
+            this.btnAddRevenue = new System.Windows.Forms.Button();
             this.MainTab.SuspendLayout();
             this.CompanyListTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCompanies)).BeginInit();
@@ -206,6 +207,7 @@ namespace CompanyManagementTools
             // 
             // ProfitLossTab
             // 
+            this.ProfitLossTab.Controls.Add(this.btnAddRevenue);
             this.ProfitLossTab.Controls.Add(this.chartRevenue);
             this.ProfitLossTab.Controls.Add(this.cmbRevenue);
             this.ProfitLossTab.Location = new System.Drawing.Point(4, 25);
@@ -225,7 +227,7 @@ namespace CompanyManagementTools
             this.chartRevenue.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartRevenue.Legends.Add(legend1);
-            this.chartRevenue.Location = new System.Drawing.Point(10, 37);
+            this.chartRevenue.Location = new System.Drawing.Point(6, 37);
             this.chartRevenue.Name = "chartRevenue";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -237,7 +239,7 @@ namespace CompanyManagementTools
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             this.chartRevenue.Series.Add(series1);
-            this.chartRevenue.Size = new System.Drawing.Size(954, 601);
+            this.chartRevenue.Size = new System.Drawing.Size(954, 564);
             this.chartRevenue.TabIndex = 3;
             title1.Name = "Profit";
             title1.Text = "Profit Chart";
@@ -261,6 +263,16 @@ namespace CompanyManagementTools
             this.entityCommand1.Connection = null;
             this.entityCommand1.EnablePlanCaching = true;
             this.entityCommand1.Transaction = null;
+            // 
+            // btnAddRevenue
+            // 
+            this.btnAddRevenue.Location = new System.Drawing.Point(856, 611);
+            this.btnAddRevenue.Name = "btnAddRevenue";
+            this.btnAddRevenue.Size = new System.Drawing.Size(112, 33);
+            this.btnAddRevenue.TabIndex = 4;
+            this.btnAddRevenue.Text = "Add Revenue";
+            this.btnAddRevenue.UseVisualStyleBackColor = true;
+            this.btnAddRevenue.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -300,6 +312,7 @@ namespace CompanyManagementTools
         private System.Windows.Forms.ComboBox cmbRevenue;
         private System.Windows.Forms.Button btnRefreshCompanies;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
+        private System.Windows.Forms.Button btnAddRevenue;
     }
 }
 
